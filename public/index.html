@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𓄂𝐕𝐀𝐓𝐀𝐍࿐</title>
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- SPLASH SCREEN -->
+<!-- ========================================== -->
+<div id="splashScreen">
+    <div class="splash-content">
+        <div class="splash-logo">🏛️</div>
+        <h1 class="splash-title">𓄂𝐕𝐀𝐓𝐀𝐍࿐</h1>
+        <div class="splash-subtitle">اتحاد ایران باستان</div>
+        <div class="splash-particles"></div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MAIN CONTENT -->
+<!-- ========================================== -->
+<div id="mainContent" style="display: none;">
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <div class="logo-text">𓄂𝐕𝐀𝐓𝐀𝐍࿐</div>
+        </div>
+        <div class="header-right">
+            <div class="user-coins" id="userCoins">
+                <span class="coin-icon">🪙</span>
+                <span class="coin-amount" id="coinAmount">0</span>
+            </div>
+            <div class="user-info">
+                <span id="usernameDisplay">مهمان</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== GLASS MENU ===== -->
+    <div class="glass-menu" id="glassMenu">
+        <div class="menu-content">
+            <button class="menu-close" id="menuClose">✕</button>
+            <nav class="menu-nav">
+                <a href="#" class="menu-item active" data-page="home">🏠 خانه</a>
+                <a href="#" class="menu-item" data-page="games">🎮 بازی‌ها</a>
+                <a href="#" class="menu-item" data-page="shop">🏪 فروشگاه</a>
+                <a href="#" class="menu-item" data-page="challenges">🏆 چالش‌ها</a>
+                <a href="#" class="menu-item" data-page="tournaments">🏅 مسابقات</a>
+                <a href="#" class="menu-item" data-page="luck">🎰 شانس</a>
+                <a href="#" class="menu-item" data-page="profile">👤 پروفایل</a>
+                <a href="#" class="menu-item" id="loginBtn">🔑 ورود/ثبت‌نام</a>
+                <a href="#" class="menu-item admin-only" id="adminPanelBtn" style="display:none;">🔐 پنل مدیریت</a>
+                <a href="#" class="menu-item" id="logoutBtn" style="display:none;">🚪 خروج</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE: LOBBY (HOME) -->
+    <!-- ========================================== -->
+    <div id="page-home" class="page active">
+        <main class="lobby">
+            <div class="bg-particles" id="bgParticles"></div>
+            <div class="persian-waves">
+                <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="rgba(212, 175, 55, 0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+            </div>
+            <div class="lobby-content">
+                <!-- Announcements -->
+                <section class="lobby-section announcements-section">
+                    <h2 class="section-title">📢 اطلاعیه‌ها</h2>
+                    <div class="slider-container">
+                        <div class="slider-track" id="sliderTrack"></div>
+                        <div class="slider-dots" id="sliderDots"></div>
+                        <button class="slider-btn prev" id="sliderPrev">‹</button>
+                        <button class="slider-btn next" id="sliderNext">›</button>
+                    </div>
+                </section>
+
+                <!-- ====== MEMBERS SECTION ====== -->
+                <section class="lobby-section members-section">
+                    <h2 class="section-title">👥 لیست اعضا</h2>
+                    <div class="members-list" id="membersList"></div>
+                </section>
+
+                <!-- ====== BATTLES SECTION ====== -->
+                <section class="lobby-section battles-section">
+                    <h2 class="section-title">⚔️ آمار جنگ‌ها</h2>
+                    <div class="battles-grid" id="battlesGrid"></div>
+                    <div class="battles-stats" id="battlesStats"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE: GAMES -->
+    <!-- ========================================== -->
+    <div id="page-games" class="page">
+        <main class="games-lobby">
+            <div class="games-grid">
+                <!-- Game 1: Tic-Tac-Toe -->
+                <div class="game-card" data-game="tictactoe">
+                    <div class="game-icon">❌</div>
+                    <h3 class="game-title">دوز</h3>
+                    <p class="game-desc">بازی کلاسیک دوز با قابلیت بازی آنلاین</p>
+                    <div class="game-modes">
+                        <button class="mode-btn" data-mode="bot">🤖 با ربات</button>
+                        <button class="mode-btn" data-mode="online">🌐 آنلاین</button>
+                    </div>
+                    <div class="game-bet">شرط: <span class="bet-amount">۵</span> سکه</div>
+                </div>
+                <!-- Game 2: Rock Paper Scissors -->
+                <div class="game-card" data-game="rps">
+                    <div class="game-icon">✊</div>
+                    <h3 class="game-title">سنگ کاغذ قیچی</h3>
+                    <p class="game-desc">بازی معروف سنگ کاغذ قیچی با دوستان</p>
+                    <div class="game-modes">
+                        <button class="mode-btn" data-mode="bot">🤖 با ربات</button>
+                        <button class="mode-btn" data-mode="online">🌐 آنلاین</button>
+                    </div>
+                    <div class="game-bet">شرط: <span class="bet-amount">۵</span> سکه</div>
+                </div>
+                <!-- Game 3: Air Battle -->
+                <div class="game-card" data-game="airbattle">
+                    <div class="game-icon">✈️</div>
+                    <h3 class="game-title">نبرد هوایی</h3>
+                    <p class="game-desc">نبرد هوایی دو نفره با حرکت و بمباران</p>
+                    <div class="game-modes">
+                        <button class="mode-btn" data-mode="bot">🤖 با ربات</button>
+                        <button class="mode-btn" data-mode="online">🌐 آنلاین</button>
+                    </div>
+                    <div class="game-bet">شرط: <span class="bet-amount">۱۰</span> سکه</div>
+                </div>
+            </div>
+            <div class="game-play-area" id="gamePlayArea">
+                <div class="game-container" id="gameContainer">
+                    <div class="game-placeholder">
+                        <div class="placeholder-icon">🎮</div>
+                        <h3>یک بازی را انتخاب کنید</h3>
+                        <p>برای شروع بازی، یکی از بازی‌های بالا را انتخاب کنید</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE: ADMIN PANEL -->
+    <!-- ========================================== -->
+    <div id="page-admin" class="page">
+        <main class="admin-panel">
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="announcements">📢 اطلاعیه‌ها</button>
+                <button class="admin-tab" data-tab="members">👥 اعضا</button>
+                <button class="admin-tab" data-tab="battles">⚔️ جنگ‌ها</button>
+                <button class="admin-tab" data-tab="users">👤 کاربران</button>
+            </div>
+            <div class="admin-content">
+                <div class="admin-section active" id="section-announcements">
+                    <h2>📢 مدیریت اطلاعیه‌ها</h2>
+                    <form id="announcementForm">
+                        <input type="text" id="announcementTitle" placeholder="عنوان اطلاعیه" required>
+                        <input type="text" id="announcementDate" placeholder="تاریخ">
+                        <textarea id="announcementContent" placeholder="متن اطلاعیه" required></textarea>
+                        <button type="submit">➕ افزودن اطلاعیه</button>
+                    </form>
+                    <div id="announcementsList"></div>
+                </div>
+                <div class="admin-section" id="section-members">
+                    <h2>👥 مدیریت اعضا</h2>
+                    <form id="memberForm">
+                        <input type="text" id="memberName" placeholder="اسم نمایشی" required>
+                        <input type="text" id="memberTag" placeholder="تگ">
+                        <input type="number" id="memberOrder" placeholder="ترتیب نمایش" value="999">
+                        <button type="submit">➕ افزودن عضو</button>
+                    </form>
+                    <div id="adminMembersList"></div>
+                </div>
+                <div class="admin-section" id="section-battles">
+                    <h2>⚔️ مدیریت نتایج جنگ‌ها</h2>
+                    <form id="battleForm">
+                        <input type="text" id="battleDate" placeholder="تاریخ مسابقه" required>
+                        <input type="text" id="battleOpponent" placeholder="نام اتحاد حریف" required>
+                        <select id="battleResult" required>
+                            <option value="پیروزی">پیروزی</option>
+                            <option value="شکست">شکست</option>
+                            <option value="مساوی">مساوی</option>
+                        </select>
+                        <input type="text" id="battleDescription" placeholder="توضیحات">
+                        <button type="submit">➕ ثبت نتیجه</button>
+                    </form>
+                    <div id="battlesList"></div>
+                </div>
+                <div class="admin-section" id="section-users">
+                    <h2>👤 مدیریت کاربران</h2>
+                    <div id="usersList"></div>
+                <div class="admin-section" id="section-password">
+                    <h2>🔑 تغییر رمز عبور</h2>
+                    <form id="passwordForm">
+                        <input type="password" id="currentPassword" placeholder="رمز فعلی" required>
+                        <input type="password" id="newPassword" placeholder="رمز جدید" required>
+                        <input type="password" id="confirmPassword" placeholder="تکرار رمز جدید" required>
+                        <button type="submit">تغییر رمز</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE: SHOP -->
+    <!-- ========================================== -->
+    <div id="page-shop" class="page">
+        <main class="shop-page">
+            <div id="shopContent">
+                <div class="shop-loading">در حال بارگذاری...</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE: CHALLENGES -->
+    <!-- ========================================== -->
+    <div id="page-challenges" class="page">
+        <main class="challenges-page">
+            <h2 class="section-title">🏆 چالش‌های روزانه</h2>
+            <div id="challengesContent">
+                <div class="shop-loading">در حال بارگذاری...</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE: TOURNAMENTS -->
+    <!-- ========================================== -->
+    <div id="page-tournaments" class="page">
+        <main class="tournaments-page">
+            <h2 class="section-title">🏅 مسابقات هفتگی</h2>
+            <div id="tournamentsContent">
+                <div class="shop-loading">در حال بارگذاری...</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE: LUCK -->
+    <!-- ========================================== -->
+    <div id="page-luck" class="page">
+        <main class="luck-page">
+            <h2 class="section-title">🎰 سیستم شانس</h2>
+            <div id="luckContent">
+                <div class="shop-loading">در حال بارگذاری...</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE: PROFILE -->
+    <!-- ========================================== -->
+    <div id="page-profile" class="page">
+        <main class="profile-page">
+            <h2 class="section-title">👤 پروفایل</h2>
+            <div id="profileContent">
+                <div class="shop-loading">در حال بارگذاری...</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- FLOATING BUTTONS -->
+    <!-- ========================================== -->
+    <button class="floating-btn chat-btn" id="chatBtn">💬</button>
+    <button class="floating-btn games-btn" id="gamesBtn">🎮</button>
+
+    <!-- ========================================== -->
+    <!-- CHAT MODAL -->
+    <!-- ========================================== -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-header">
+            <span>🤖 راهنمای سایت</span>
+            <button class="chat-close" id="chatClose">✕</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot">
+                <div class="message-content">سلام! 👋 من راهنمای شما هستم.<br>سوالات خود را بپرسید.</div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="سوال خود را بنویسید...">
+            <button id="chatSend">📤</button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- GAME MODAL -->
+    <!-- ========================================== -->
+    <div class="game-modal" id="gameModal">
+        <div class="game-modal-content">
+            <button class="game-modal-close" id="gameModalClose">✕</button>
+            <div id="gameModalBody"></div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- AUTH MODAL -->
+    <!-- ========================================== -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <button class="modal-close" id="authModalClose">✕</button>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">ورود</button>
+                <button class="auth-tab" data-tab="register">ثبت‌نام</button>
+            </div>
+            <div id="loginForm">
+                <input type="text" id="loginUsername" placeholder="نام کاربری">
+                <input type="password" id="loginPassword" placeholder="رمز عبور">
+                <button id="loginSubmit">ورود</button>
+            </div>
+            <div id="registerForm" style="display:none;">
+                <input type="text" id="registerDisplayName" placeholder="اسم نمایشی (فقط انگلیسی)">
+                <input type="text" id="registerUsername" placeholder="نام کاربری">
+                <input type="password" id="registerPassword" placeholder="رمز عبور">
+                <button id="registerSubmit">ثبت‌نام</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- FOOTER -->
+    <!-- ========================================== -->
+    <footer class="footer">
+        <p>© 2026 𓄂𝐕𝐀𝐓𝐀𝐍࿐ | تمامی حقوق محفوظ است</p>
+    </footer>
+
+</div>
+
+<!-- ========================================== -->
+<!-- SCRIPTS -->
+<!-- ========================================== -->
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
